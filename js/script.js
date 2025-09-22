@@ -184,14 +184,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         </table>
                     </div>
                     <p>Para tomar decisiones importantes, la información es tu mejor herramienta. Un voto informado es un voto por el progreso de todos.</p>
-                    <div class="sponsored-content-card" style="background-color: #002A8D;">
+                    <div class="sponsored-content-card">
                         <div class="sponsor-logo-container">
                             <img src="images/logo_bcp_white.svg" alt="Logo BCP" class="sponsor-logo-small">
                         </div>
                         <div class="sponsor-content-text">
                             <h4>Construye un Futuro Seguro</h4>
                             <p>Así como eliges lo mejor para tus finanzas, elige con responsabilidad a tus representantes. BCP, comprometidos con el progreso del Perú.</p>
-                            <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button" style="background-color: #FF7800;">Conoce más sobre BCP</a>
+                            <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button">Conoce más sobre BCP</a>
                         </div>
                     </div>
                     <p>Recuerda que fiscalizar a los candidatos es nuestro derecho y deber como ciudadanos. ¡Un elector informado fortalece la democracia! 🇵🇪</p>
