@@ -227,14 +227,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     </button>
                 </div>
                 <a href="#" class="source-item">
-                    <img src="https://via.placeholder.com/100" alt="Nota de RPP" class="source-item-img">
+                    <img src="images/nota_img.jpg" alt="Nota de RPP" class="source-item-img">
                     <div class="source-item-text">
                         <h4>ONPE: ¿Cuándo se publicará la lista oficial de miembros de mesa para 2026?</h4>
                         <p>https://rpp.pe/politica/elecciones/onpe-cuando-se-publicara...</p>
                     </div>
                 </a>
                 <a href="#" class="source-item">
-                    <img src="https://via.placeholder.com/100" alt="Nota de RPP" class="source-item-img">
+                    <img src="images/nota_img.jpg" alt="Nota de RPP" class="source-item-img">
                     <div class="source-item-text">
                         <h4>Elecciones 2026: Guía completa para la consulta de local de votación</h4>
                         <p>https://rpp.pe/politica/elecciones/guia-completa-para-consulta...</p>
@@ -386,4 +386,42 @@ document.addEventListener('DOMContentLoaded', function () {
     setupTextarea('prompt-textarea');
     setupTextarea('chat-textarea');
     setupAutocomplete('prompt-textarea', 'autocomplete-results');
+
+    const newThreadBtn = document.getElementById('new-thread-btn');
+
+    function showWelcomeScreenNoAnimation() {
+        const welcomeView = document.getElementById('welcome-view');
+        const chatFlowContainer = document.getElementById('chat-flow-container');
+        const welcomeHeading = document.getElementById('welcome-heading');
+
+        chatFlowContainer.classList.add('hidden');
+        welcomeView.classList.remove('hidden');
+
+        const originalHTML = 'Te damos la bienvenida a Brújula Electoral,<br>Tu guía electoral para el 2026. Pregunta lo que necesites.';
+        welcomeHeading.innerHTML = originalHTML;
+        welcomeHeading.classList.add('animation-complete');
+
+        const elements = document.querySelectorAll('#welcome-view .fade-in-item');
+        elements.forEach(el => {
+            el.classList.add('visible');
+        });
+
+        // Clear chat log
+        const chatLog = document.querySelector('.chat-log');
+        if (chatLog) chatLog.innerHTML = '';
+
+        // Reset textareas
+        const promptTextarea = document.getElementById('prompt-textarea');
+        if (promptTextarea) promptTextarea.value = '';
+        const chatTextarea = document.getElementById('chat-textarea');
+        if (chatTextarea) chatTextarea.value = '';
+    }
+
+    if (newThreadBtn) {
+        newThreadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showWelcomeScreenNoAnimation();
+            closeMenu();
+        });
+    }
 });
