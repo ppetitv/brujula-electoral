@@ -154,17 +154,61 @@ document.addEventListener('DOMContentLoaded', function () {
 
             responseContent.innerHTML = '';
             
-            const fullResponseText = `
-                <p>Para saber si has sido seleccionado como miembro de mesa para las Elecciones Generales 2026 en Per&uacute;, debes consultar la informaci&oacute;n oficial que publicar&aacute; la Oficina Nacional de Procesos Electorales (ONPE).</p>
-                <p>Aqu&iacute; te indico c&oacute;mo hacerlo, bas&aacute;ndome en los procesos de elecciones anteriores:</p>
-                <div style="display: flex; flex-direction: column; gap: 0.8em;">
-                    <p class="list-item-paragraph">📅 <strong>1. Espera la publicaci&oacute;n oficial:</strong> La ONPE sortear&aacute; y publicar&aacute; la lista de los miembros de mesa titulares y suplentes para las Elecciones 2026.</p>
-                    <p class="list-item-paragraph">🔗 <strong>2. Utiliza el enlace de consulta de la ONPE:</strong> La ONPE habilita un enlace espec&iacute;fico en su p&aacute;gina web oficial para que los ciudadanos consulten su local de votaci&oacute;n.</p>
-                    <p class="list-item-paragraph">🆔 <strong>3. Ingresa tu DNI:</strong> En el enlace de consulta, solo necesitas ingresar tu n&uacute;mero de Documento Nacional de Identidad (DNI) para obtener la informaci&oacute;n.</p>
-                    <p class="list-item-paragraph">🔔 <strong>4. Mantente informado:</strong> Te recomiendo visitar peri&oacute;dicamente la p&aacute;gina web de la ONPE para conocer las fechas exactas del sorteo y la publicaci&oacute;n de la lista oficial.</p>
-                </div>
-                <p>Es importante recordar que el sorteo de miembros de mesa se realiza de manera p&uacute;blica y que la designaci&oacute;n es un deber c&iacute;vico.</p>
-            `;
+            let fullResponseText = '';
+            if (userQuery.includes("antecedentes penales")) {
+                fullResponseText = `
+                    <p>¡Claro que sí! Verificar los antecedentes de un candidato es un paso fundamental para un voto informado. 🗳️ Aquí te explico cómo hacerlo usando las plataformas oficiales:</p>
+                    <p>El Jurado Nacional de Elecciones (JNE) centraliza esta información en su plataforma <strong>"Voto Informado"</strong>. Además, existen otros registros públicos que puedes consultar.</p>
+                    <div class="responsive-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Plataforma</th>
+                                    <th>¿Qué información encuentras?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Voto Informado (JNE)</strong></td>
+                                    <td>Hojas de vida, sentencias penales, deudas, bienes y rentas.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Registro de Deudores Alimentarios Morosos (REDAM)</strong></td>
+                                    <td>Verifica si el candidato tiene deudas por pensión de alimentos.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Consulta de Expedientes Judiciales (CEJ)</strong></td>
+                                    <td>Permite buscar expedientes por nombre en el sistema de justicia.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Investigar puede ser complejo. Por eso, nuestro aliado en transparencia, <strong>OjoPúblico</strong>, ha preparado una guía completa para ti.</p>
+                    <div class="sponsored-content-card">
+                        <div class="sponsor-logo-container">
+                            <img src="https://ojopublico.com/themes/ojo-publico/assets/images/logo-ojo-publico-white.svg" alt="Logo OjoPúblico" class="sponsor-logo-small">
+                        </div>
+                        <div class="sponsor-content-text">
+                            <h4>La Guía Definitiva para Investigar a tu Candidato</h4>
+                            <p>Aprende a verificar antecedentes, declaraciones juradas y más, paso a paso. Un recurso gratuito de OjoPúblico.</p>
+                            <a href="https://ojopublico.com/" target="_blank" class="sponsor-cta-button">Descargar Guía</a>
+                        </div>
+                    </div>
+                    <p>Recuerda que fiscalizar a los candidatos es nuestro derecho y deber como ciudadanos. ¡Un elector informado fortalece la democracia! 🇵🇪</p>
+                `;
+            } else {
+                fullResponseText = `
+                    <p>Para saber si has sido seleccionado como miembro de mesa para las Elecciones Generales 2026 en Per&uacute;, debes consultar la informaci&oacute;n oficial que publicar&aacute; la Oficina Nacional de Procesos Electorales (ONPE).</p>
+                    <p>Aqu&iacute; te indico c&oacute;mo hacerlo, bas&aacute;ndome en los procesos de elecciones anteriores:</p>
+                    <div style="display: flex; flex-direction: column; gap: 0.8em;">
+                        <p class="list-item-paragraph">📅 <strong>1. Espera la publicaci&oacute;n oficial:</strong> La ONPE sortear&aacute; y publicar&aacute; la lista de los miembros de mesa titulares y suplentes para las Elecciones 2026.</p>
+                        <p class="list-item-paragraph">🔗 <strong>2. Utiliza el enlace de consulta de la ONPE:</strong> La ONPE habilita un enlace espec&iacute;fico en su p&aacute;gina web oficial para que los ciudadanos consulten su local de votaci&oacute;n.</p>
+                        <p class="list-item-paragraph">🆔 <strong>3. Ingresa tu DNI:</strong> En el enlace de consulta, solo necesitas ingresar tu n&uacute;mero de Documento Nacional de Identidad (DNI) para obtener la informaci&oacute;n.</p>
+                        <p class="list-item-paragraph">🔔 <strong>4. Mantente informado:</strong> Te recomiendo visitar peri&oacute;dicamente la p&aacute;gina web de la ONPE para conocer las fechas exactas del sorteo y la publicaci&oacute;n de la lista oficial.</p>
+                    </div>
+                    <p>Es importante recordar que el sorteo de miembros de mesa se realiza de manera p&uacute;blica y que la designaci&oacute;n es un deber c&iacute;vico.</p>
+                `;
+            }
             
             animateText(fullResponseText, responseContent);
             

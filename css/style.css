@@ -5,7 +5,7 @@
     --chat-bg: #f7f7f7;
     --primary-purple: #7a5cff;
     --primary-purple-dark: #6a48f2;
-    --light-purple: #eeeaff;
+    --light-purple: #f3f0ff;
     --text-dark: #1e1e1e;
     --text-light: #6b7280;
     --text-suggestion: #2c2a50;
@@ -38,7 +38,7 @@ body { font-family: var(--font-family); background-color: var(--content-bg); col
 .main-content-wrapper { flex-grow: 1; display: flex; flex-direction: column; padding: 20px; max-height: 100vh; overflow: hidden; }
 .main-content { flex-grow: 1; display: flex; flex-direction: column; background-color: var(--chat-bg); border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); position: relative; overflow-y: auto; border: solid 1px #e1e1e1cc; }
 #welcome-view { padding: 20px; text-align: center; }
-.logo-brujula img { opacity:.9; width:90px; height:90px; border-radius:22px; margin: 0 auto 24px; }
+.logo-brujula img { opacity:.9; width:90px; height:90px; border-radius:22px; margin: 0 auto 24px; box-shadow:0 10px 25px rgba(0,0,0,.08); }
 h1#welcome-heading { color: #2c2a50; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; line-height: 1.4; margin-bottom: 32px; min-height: 120px; }
 h1#welcome-heading::after { content: '|'; animation: blink 1s step-end infinite; font-weight: 100; color: #ccc; }
 h1#welcome-heading.animation-complete::after { content: ''; }
@@ -72,7 +72,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .rpp-disclaimer svg { width: 16px; height: 16px; color: #1AA99D; }
 #chat-flow-container { display: flex; flex-direction: column; height: 100%; }
 .chat-log { flex-grow: 1; padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 900px; width: 100%; margin: 0 auto; }
-.user-bubble { align-self: flex-end; background-color: #cfd5f5; color: #000000; padding: 12px 20px; border-radius: 20px 20px 4px 20px; max-width: 80%; font-weight: 500; }
+.user-bubble { align-self: flex-end; background-color: #1302612e; color: #000000; padding: 12px 20px; border-radius: 20px 20px 4px 20px; max-width: 80%; font-weight: 500; }
 .assistant-response { display: flex; align-items: flex-start; gap: 12px; max-width: 100%; }
 .assistant-response .logo-brujula { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; box-shadow: var(--shadow); }
 .assistant-response .response-content { flex-grow: 1; color: #374151; line-height: 1.6; }
@@ -133,7 +133,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     .sidebar{position:fixed;top:0;left:-280px;z-index:1001;height:100%;box-shadow:0 0 60px rgba(0,0,0,.2);background-color:var(--card-bg)}
     .sidebar.visible{left:0}
     .mobile-header{position:sticky;top:0;z-index:999;display:flex;padding:12px 16px;border-bottom:1px solid rgba(229,231,255,.5);align-items:center;justify-content:flex-start;gap:16px;background-color:rgba(255,255,255,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-    .nuevo-hilo-compact{margin-left:auto;padding:8px;border-radius:50%;border: 1px solid var(--border-color);background-color:var(--light-purple);color:var(--primary-purple)}
+    .nuevo-hilo-compact{margin-left:auto;padding:8px;border-radius:50%;background-color:var(--light-purple);color:var(--primary-purple)}
     .main-content-wrapper{padding:0;overflow:visible;max-height:none}
     .main-content{z-index:1;padding:0;border:none;margin-top:0;box-shadow:none;border-radius:0}
     #welcome-view{padding:16px}
