@@ -112,108 +112,121 @@ document.addEventListener('DOMContentLoaded', function () {
     
     function scrollToBottom() {
         if (window.innerWidth <= 768) {
-            window.scrollTo(0, document.body.scrollHeight);
+            const scrollTarget = document.documentElement.scrollHeight;
+            window.scrollTo({
+                top: scrollTarget,
+                behavior: 'smooth'
+            });
         } else {
-            mainContent.scrollTop = mainContent.scrollHeight;
+            mainContent.scrollTo({
+                top: mainContent.scrollHeight,
+                behavior: 'smooth'
+            });
         }
     }
 
     function startChatSequence(userQuery, isPreloaded = false) {
-        if(mobileNewThreadBtn) mobileNewThreadBtn.classList.remove('hidden');
-        chatLog.innerHTML = '';
-        const userBubbleHTML = `<div class="user-bubble">${userQuery}</div>`;
-        chatLog.insertAdjacentHTML('beforeend', userBubbleHTML);
+        try {
+            if(mobileNewThreadBtn) mobileNewThreadBtn.classList.remove('hidden');
+            chatLog.innerHTML = '';
+            const userBubbleHTML = `<div class="user-bubble">${userQuery}</div>`;
+            chatLog.insertAdjacentHTML('beforeend', userBubbleHTML);
 
-        const assistantResponseHTML = `
-            <div class="assistant-response">
-                <img src="images/logo_brujula_small.svg" alt="Logo Brújula" class="logo-brujula">
-                <div class="response-content">
-                    <div class="preloader"><span class="preloader-text"></span></div>
-                </div>
-            </div>`;
-        chatLog.insertAdjacentHTML('beforeend', assistantResponseHTML);
-        
-        const preloaderText = chatLog.querySelector('.preloader-text');
-        const messages = ["Verificando fuentes de RPP...", "Construyendo respuesta...", "Potenciando esta consulta gracias a Marca Patrocinadora", "Potenciando esta consulta gracias a Marca Patrocinadora", "Potenciando esta consulta gracias a Marca Patrocinadora"];
-        let messageIndex = 0;
-        if (preloaderText) {
-            preloaderText.textContent = messages[messageIndex];
-            const intervalId = setInterval(() => {
-                messageIndex = (messageIndex + 1) % messages.length;
+            const assistantResponseHTML = `
+                <div class="assistant-response">
+                    <img src="images/logo_brujula_small.svg" alt="Logo Brújula" class="logo-brujula">
+                    <div class="response-content">
+                        <div class="preloader"><span class="preloader-text"></span></div>
+                    </div>
+                </div>`;
+            chatLog.insertAdjacentHTML('beforeend', assistantResponseHTML);
+            
+            const preloaderText = chatLog.querySelector('.preloader-text');
+            const messages = ["Verificando fuentes de RPP...", "Construyendo respuesta...", "Potenciando esta consulta gracias a Marca Patrocinadora", "Potenciando esta consulta gracias a Marca Patrocinadora", "Potenciando esta consulta gracias a Marca Patrocinadora"];
+            let messageIndex = 0;
+            if (preloaderText) {
                 preloaderText.textContent = messages[messageIndex];
-            }, 1200);
-            chatLog.dataset.intervalId = intervalId;
+                const intervalId = setInterval(() => {
+                    messageIndex = (messageIndex + 1) % messages.length;
+                    preloaderText.textContent = messages[messageIndex];
+                }, 1200);
+                chatLog.dataset.intervalId = intervalId;
+            }
+
+            setTimeout(() => {
+                if (chatLog.dataset.intervalId) {
+                    clearInterval(chatLog.dataset.intervalId);
+                }
+                const responseContent = chatLog.querySelector('.assistant-response:last-child .response-content');
+                if (!responseContent) return;
+
+                responseContent.innerHTML = '';
+                
+                let fullResponseText = '';
+                if (userQuery.includes("antecedentes penales")) {
+                    fullResponseText = `
+                        <p>¡Claro que sí! Verificar los antecedentes de un candidato es un paso fundamental para un voto informado. 🗳️ Aquí te explico cómo hacerlo usando las plataformas oficiales:</p>
+                        <p>El Jurado Nacional de Elecciones (JNE) centraliza esta información en su plataforma <strong>"Voto Informado"</strong>. Además, existen otros registros públicos que puedes consultar.</p>
+                        <div class="responsive-table hidden-initially">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Plataforma</th>
+                                        <th>¿Qué información encuentras?</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Voto Informado (JNE)</strong></td>
+                                        <td>Hojas de vida, sentencias penales, deudas, bienes y rentas.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Registro de Deudores Alimentarios Morosos (REDAM)</strong></td>
+                                        <td>Verifica si el candidato tiene deudas por pensión de alimentos.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Consulta de Expedientes Judiciales (CEJ)</strong></td>
+                                        <td>Permite buscar expedientes por nombre en el sistema de justicia.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>Para tomar decisiones importantes, la información es tu mejor herramienta. Un voto informado es un voto por el progreso de todos.</p>
+                        <div class="sponsored-content-card hidden-initially">
+                            <div class="sponsor-logo-container">
+                                <img src="images/logo_bcp_white.svg" alt="Logo BCP" class="sponsor-logo-small">
+                            </div>
+                            <div class="sponsor-content-text">
+                                <h4>Construye un Futuro Seguro</h4>
+                                <p>Así como eliges lo mejor para tus finanzas, elige con responsabilidad a tus representantes. BCP, comprometidos con el progreso del Perú.</p>
+                                <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button">Conoce más sobre BCP</a>
+                            </div>
+                        </div>
+                        <p>Recuerda que fiscalizar a los candidatos es nuestro derecho y deber como ciudadanos. ¡Un elector informado fortalece la democracia! 🇵🇪</p>
+                    `;
+                } else {
+                    fullResponseText = `
+                        <p>Para saber si has sido seleccionado como miembro de mesa para las Elecciones Generales 2026 en Per&uacute;, debes consultar la informaci&oacute;n oficial que publicar&aacute; la Oficina Nacional de Procesos Electorales (ONPE).</p>
+                        <p>Aqu&iacute; te indico c&oacute;mo hacerlo, bas&aacute;ndome en los procesos de elecciones anteriores:</p>
+                        <div style="display: flex; flex-direction: column; gap: 0.8em;">
+                            <p class="list-item-paragraph">📅 <strong>1. Espera la publicaci&oacute;n oficial:</strong> La ONPE sortear&aacute; y publicar&aacute; la lista de los miembros de mesa titulares y suplentes para las Elecciones 2026.</p>
+                            <p class="list-item-paragraph">🔗 <strong>2. Utiliza el enlace de consulta de la ONPE:</strong> La ONPE habilita un enlace espec&iacute;fico en su p&aacute;gina web oficial para que los ciudadanos consulten su local de votaci&oacute;n.</p>
+                            <p class="list-item-paragraph">🆔 <strong>3. Ingresa tu DNI:</strong> En el enlace de consulta, solo necesitas ingresar tu n&uacute;mero de Documento Nacional de Identidad (DNI) para obtener la informaci&oacute;n.</p>
+                            <p class="list-item-paragraph">🔔 <strong>4. Mantente informado:</strong> Te recomiendo visitar peri&oacute;dicamente la p&aacute;gina web de la ONPE para conocer las fechas exactas del sorteo y la publicaci&oacute;n de la lista oficial.</p>
+                        </div>
+                        <p>Es importante recordar que el sorteo de miembros de mesa se realiza de manera p&uacute;blica y que la designaci&oacute;n es un deber c&iacute;vico.</p>
+                    `;
+                }
+                
+                animateText(fullResponseText, responseContent);
+                setupScrollAnimations();
+                
+            }, isPreloaded ? 100 : 4000);
+        } catch (error) {
+            console.error('Error en chat sequence:', error);
+            // Mostrar mensaje de error amigable al usuario
+            chatLog.innerHTML = '<div class="error-message">Lo sentimos, ha ocurrido un error. Por favor, intenta nuevamente.</div>';
         }
-
-        setTimeout(() => {
-            if (chatLog.dataset.intervalId) {
-                clearInterval(chatLog.dataset.intervalId);
-            }
-            const responseContent = chatLog.querySelector('.assistant-response:last-child .response-content');
-            if (!responseContent) return;
-
-            responseContent.innerHTML = '';
-            
-            let fullResponseText = '';
-            if (userQuery.includes("antecedentes penales")) {
-                fullResponseText = `
-                    <p>¡Claro que sí! Verificar los antecedentes de un candidato es un paso fundamental para un voto informado. 🗳️ Aquí te explico cómo hacerlo usando las plataformas oficiales:</p>
-                    <p>El Jurado Nacional de Elecciones (JNE) centraliza esta información en su plataforma <strong>"Voto Informado"</strong>. Además, existen otros registros públicos que puedes consultar.</p>
-                    <div class="responsive-table hidden-initially">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Plataforma</th>
-                                    <th>¿Qué información encuentras?</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Voto Informado (JNE)</strong></td>
-                                    <td>Hojas de vida, sentencias penales, deudas, bienes y rentas.</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Registro de Deudores Alimentarios Morosos (REDAM)</strong></td>
-                                    <td>Verifica si el candidato tiene deudas por pensión de alimentos.</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Consulta de Expedientes Judiciales (CEJ)</strong></td>
-                                    <td>Permite buscar expedientes por nombre en el sistema de justicia.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p>Para tomar decisiones importantes, la información es tu mejor herramienta. Un voto informado es un voto por el progreso de todos.</p>
-                    <div class="sponsored-content-card hidden-initially">
-                        <div class="sponsor-logo-container">
-                            <img src="images/logo_bcp_white.svg" alt="Logo BCP" class="sponsor-logo-small">
-                        </div>
-                        <div class="sponsor-content-text">
-                            <h4>Construye un Futuro Seguro</h4>
-                            <p>Así como eliges lo mejor para tus finanzas, elige con responsabilidad a tus representantes. BCP, comprometidos con el progreso del Perú.</p>
-                            <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button">Conoce más sobre BCP</a>
-                        </div>
-                    </div>
-                    <p>Recuerda que fiscalizar a los candidatos es nuestro derecho y deber como ciudadanos. ¡Un elector informado fortalece la democracia! 🇵🇪</p>
-                `;
-            } else {
-                fullResponseText = `
-                    <p>Para saber si has sido seleccionado como miembro de mesa para las Elecciones Generales 2026 en Per&uacute;, debes consultar la informaci&oacute;n oficial que publicar&aacute; la Oficina Nacional de Procesos Electorales (ONPE).</p>
-                    <p>Aqu&iacute; te indico c&oacute;mo hacerlo, bas&aacute;ndome en los procesos de elecciones anteriores:</p>
-                    <div style="display: flex; flex-direction: column; gap: 0.8em;">
-                        <p class="list-item-paragraph">📅 <strong>1. Espera la publicaci&oacute;n oficial:</strong> La ONPE sortear&aacute; y publicar&aacute; la lista de los miembros de mesa titulares y suplentes para las Elecciones 2026.</p>
-                        <p class="list-item-paragraph">🔗 <strong>2. Utiliza el enlace de consulta de la ONPE:</strong> La ONPE habilita un enlace espec&iacute;fico en su p&aacute;gina web oficial para que los ciudadanos consulten su local de votaci&oacute;n.</p>
-                        <p class="list-item-paragraph">🆔 <strong>3. Ingresa tu DNI:</strong> En el enlace de consulta, solo necesitas ingresar tu n&uacute;mero de Documento Nacional de Identidad (DNI) para obtener la informaci&oacute;n.</p>
-                        <p class="list-item-paragraph">🔔 <strong>4. Mantente informado:</strong> Te recomiendo visitar peri&oacute;dicamente la p&aacute;gina web de la ONPE para conocer las fechas exactas del sorteo y la publicaci&oacute;n de la lista oficial.</p>
-                    </div>
-                    <p>Es importante recordar que el sorteo de miembros de mesa se realiza de manera p&uacute;blica y que la designaci&oacute;n es un deber c&iacute;vico.</p>
-                `;
-            }
-            
-            animateText(fullResponseText, responseContent);
-            setupScrollAnimations();
-            
-        }, isPreloaded ? 100 : 4000);
     }
     
     async function animateText(htmlContent, container) {
@@ -260,13 +273,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const typingSpeed = 10;
+        const batchSize = 3; // Procesar caracteres en lotes
+    
         for (const item of allTextNodes) {
             const { node, text, nextComponent } = item;
             
-            for (let i = 0; i < text.length; i++) {
+            for (let i = 0; i < text.length; i += batchSize) {
+                const chunk = text.slice(i, i + batchSize);
                 await new Promise(resolve => setTimeout(resolve, typingSpeed));
-                node.textContent += text[i];
-                scrollToBottom();
+                node.textContent += chunk;
+                
+                // Reducir frecuencia de scroll
+                if (i % (batchSize * 2) === 0) {
+                    scrollToBottom();
+                }
             }
 
             // Mostrar componente especial después del texto correspondiente
@@ -377,13 +397,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 300);
         });
         
+        // Agregar manejo de errores para clipboard
         if(copyBtn) {
-            copyBtn.addEventListener('click', () => {
-                const responseText = responseContainer.innerText;
-                const icon = copyBtn.querySelector('i');
-                navigator.clipboard.writeText(responseText).then(() => {
+            copyBtn.addEventListener('click', async () => {
+                try {
+                    const responseText = responseContainer.innerText;
+                    await navigator.clipboard.writeText(responseText);
                     copyBtn.setAttribute('data-tooltip', '¡Copiado!');
                     copyBtn.classList.add('copied');
+                    const icon = copyBtn.querySelector('i');
                     icon.classList.remove('icon-copy');
                     icon.classList.add('icon-check');
                     setTimeout(() => {
@@ -392,7 +414,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         icon.classList.add('icon-copy');
                         icon.classList.remove('icon-check');
                     }, 2000);
-                });
+                } catch (error) {
+                    console.error('Error al copiar:', error);
+                    copyBtn.setAttribute('data-tooltip', 'Error al copiar');
+                }
             });
         }
     }
