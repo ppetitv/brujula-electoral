@@ -393,9 +393,9 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .preloader-message {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-    border-radius: 8px;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
     background: var(--bg-color);
     transition: all 0.3s ease;
 }
@@ -403,22 +403,36 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .preloader-message.sponsored-message {
     background: linear-gradient(135deg, #002A8D, var(--primary-purple));
     color: white;
-    box-shadow: 0 4px 15px rgba(106,72,242,0.2);
     transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 42, 141, 0.2);
 }
 
 .preloader-icon {
     font-size: 1.2em;
+    display: flex;
+    align-items: center;
 }
 
 .preloader-text-content {
     font-weight: 500;
+    flex-grow: 1;
 }
 
 .sponsored-message .preloader-text-content {
     font-weight: 600;
+    letter-spacing: 0.2px;
 }
 
 .loading-dots {
+    display: inline-flex;
+    gap: 4px;
     margin-left: 8px;
+}
+
+.loading-dots span {
+    width: 4px;
+    height: 4px;
+    background-color: currentColor;
+    border-radius: 50%;
+    animation: dotPulse 1.4s infinite;
 }

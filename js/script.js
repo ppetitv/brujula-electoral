@@ -157,21 +157,42 @@ document.addEventListener('DOMContentLoaded', function () {
                 text: "Potenciando esta consulta gracias a BCP",
                 isSponsored: true,
                 icon: "✨",
-                duration: 3000 // Mayor duración para el mensaje patrocinado
+                duration: 3000
             }
         ];
 
         let messageIndex = 0;
         if (preloaderText) {
+            const messages = [
+                {
+                    text: "Verificando fuentes de RPP",
+                    icon: "🔍",
+                    duration: 2000
+                },
+                {
+                    text: "Analizando información",
+                    icon: "⚡",
+                    duration: 2000
+                },
+                {
+                    text: "Construyendo respuesta",
+                    icon: "🔄",
+                    duration: 2000
+                },
+                {
+                    text: "Potenciando esta consulta gracias a BCP",
+                    isSponsored: true,
+                    icon: "✨",
+                    duration: 3000
+                }
+            ];
+
             const updatePreloader = () => {
                 const message = messages[messageIndex];
                 preloaderText.className = 'preloader-text';
                 
                 if (message.isSponsored) {
                     preloaderText.className += ' sponsored';
-                    // Aseguramos que el mensaje patrocinado sea visible
-                    preloaderText.style.display = 'flex';
-                    preloaderText.style.opacity = '1';
                 }
 
                 preloaderText.innerHTML = `
@@ -185,21 +206,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
             };
 
-            updatePreloader();
-            
-            // Usamos setTimeout en lugar de setInterval para controlar mejor los tiempos
-            const showNextMessage = () => {
-                const currentMessage = messages[messageIndex];
-                setTimeout(() => {
-                    messageIndex = (messageIndex + 1) % messages.length;
+            const showMessages = async () => {
+                for (let i = 0; i < messages.length; i++) {
+                    messageIndex = i;
                     updatePreloader();
-                    if (messageIndex < messages.length) {
-                        showNextMessage();
-                    }
-                }, currentMessage.duration);
+                    await new Promise(resolve => setTimeout(resolve, messages[i].duration));
+                }
             };
-            
-            showNextMessage();
+
+            // Iniciar la secuencia de mensajes
+            showMessages();
         }
 
         setTimeout(() => {
