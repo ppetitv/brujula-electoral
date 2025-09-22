@@ -82,7 +82,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .response-footer{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:16px;border-top:1px solid var(--border-color)}
 .sources-button{display:flex;align-items:center;gap:8px;background-color:var(--primary-purple);color:#fff;border:none;padding:8px 12px 8px 16px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,.1);transition:var(--transition-fast)}.sources-button.glow-animation{animation:pulse-glow 1.5s 1 .5s}.sources-button:hover{background-color:var(--primary-purple-dark);box-shadow:0 4px 10px rgba(0,0,0,.15);transform:translateY(-2px)}.sources-button:active{transform:translateY(0);box-shadow:0 2px 5px rgba(0,0,0,.1);background-color:#5838d0}
 .notification-badge{display:flex;align-items:center;justify-content:center;width:22px;height:22px;background-color:var(--primary-purple-dark);color:#fff;border-radius:50%;font-size:12px;font-weight:700}
-.feedback-buttons{display:flex;align-items:center;gap:4px}.feedback-buttons button{background:0 0;border:none;cursor:pointer;color:var(--text-light);padding:8px;border-radius:50%;position:relative;transition:var(--transition-fast);width: 24px;height: 24px;display: flex;align-items: center;justify-content: center}
+.feedback-buttons{display:flex;align-items:center;gap:4px}.feedback-buttons button{background:0 0;border:none;cursor:pointer;color:var(--text-light);padding:5px;border-radius:50%;position:relative;transition:var(--transition-fast);width: 30px;height: 30px;display: flex;align-items: center;justify-content: center}
 .feedback-buttons button:hover{color:var(--primary-purple)}.feedback-buttons button:active{transform:scale(.9)}.feedback-buttons button.active{background-color:var(--light-purple);color:var(--primary-purple)}
 .feedback-buttons button.copied { color: var(--success-color) !important; background-color: rgba(26, 169, 157, 0.1); }
 .feedback-buttons button::after{content:attr(data-tooltip);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background-color:var(--text-dark);color:#fff;padding:4px 8px;border-radius:4px;font-size:12px;white-space:nowrap;opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease}.feedback-buttons button:hover::after{opacity:1;visibility:visible}
@@ -90,8 +90,8 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .icon-copy,
 .icon-check {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background-color: currentColor;
     -webkit-mask-size: contain;
     mask-size: contain;
