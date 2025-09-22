@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const assistantResponseHTML = `
             <div class="assistant-response">
-                <img src="images/logo_bujula_small.svg" alt="Logo Brújula" class="logo-brujula">
+                <img src="images/logo_brujula_small.svg" alt="Logo Brújula" class="logo-brujula">
                 <div class="response-content">
                     <div class="preloader"><span class="preloader-text"></span></div>
                 </div>
