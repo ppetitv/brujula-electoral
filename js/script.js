@@ -128,20 +128,59 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="assistant-response">
                 <img src="images/logo_brujula_small.svg" alt="Logo Brújula" class="logo-brujula">
                 <div class="response-content">
-                    <div class="preloader"><span class="preloader-text"></span></div>
+                    <div class="preloader">
+                        <span class="preloader-text"></span>
+                    </div>
                 </div>
             </div>`;
         chatLog.insertAdjacentHTML('beforeend', assistantResponseHTML);
         
         const preloaderText = chatLog.querySelector('.preloader-text');
-        const messages = ["Verificando fuentes de RPP...", "Construyendo respuesta...", "Potenciando esta consulta gracias a Marca Patrocinadora", "Potenciando esta consulta gracias a Marca Patrocinadora", "Potenciando esta consulta gracias a Marca Patrocinadora", "Potenciando esta consulta gracias a Marca Patrocinadora", "Potenciando esta consulta gracias a Marca Patrocinadora"];
+        const messages = [
+            {
+                text: "Verificando fuentes de RPP",
+                icon: "🔍"
+            },
+            {
+                text: "Analizando información",
+                icon: "⚡"
+            },
+            {
+                text: "Construyendo respuesta",
+                icon: "🔄"
+            },
+            {
+                text: "Potenciando esta consulta gracias a BCP",
+                isSponsored: true,
+                icon: "✨"
+            }
+        ];
+
         let messageIndex = 0;
         if (preloaderText) {
-            preloaderText.textContent = messages[messageIndex];
+            const updatePreloader = () => {
+                const message = messages[messageIndex];
+                preloaderText.className = 'preloader-text';
+                if (message.isSponsored) {
+                    preloaderText.className += ' sponsored';
+                }
+                preloaderText.innerHTML = `
+                    ${message.icon}
+                    ${message.text}
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                `;
+            };
+
+            updatePreloader();
             const intervalId = setInterval(() => {
                 messageIndex = (messageIndex + 1) % messages.length;
-                preloaderText.textContent = messages[messageIndex];
-            }, 1200);
+                updatePreloader();
+            }, 2000); // Aumentamos el tiempo para mejor legibilidad
+            
             chatLog.dataset.intervalId = intervalId;
         }
 
