@@ -230,7 +230,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     flex-direction: column;
     gap: 16px;
     box-shadow: 0 8px 20px rgba(0, 42, 141, 0.15);
-    margin-top: 1.5em;
+    margin: 1.5em 0em;
     background-color: #002A8D; /* BCP Blue */
     color: #ffffff;
 }
