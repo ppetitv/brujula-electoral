@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const overlay = document.querySelector('.overlay');
     const body = document.body;
     const mainContent = document.querySelector('.main-content');
+    const mobileNewThreadBtn = document.getElementById('mobile-new-thread-btn');
 
     const closeMenu = () => {
         sidebar.classList.remove('visible');
@@ -118,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startChatSequence(userQuery, isPreloaded = false) {
+        if(mobileNewThreadBtn) mobileNewThreadBtn.classList.remove('hidden');
         chatLog.innerHTML = '';
         const userBubbleHTML = `<div class="user-bubble">${userQuery}</div>`;
         chatLog.insertAdjacentHTML('beforeend', userBubbleHTML);
@@ -393,11 +395,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const welcomeView = document.getElementById('welcome-view');
         const chatFlowContainer = document.getElementById('chat-flow-container');
         const welcomeHeading = document.getElementById('welcome-heading');
-        const mobileNewThreadBtn = document.getElementById('mobile-new-thread-btn');
+        if(mobileNewThreadBtn) mobileNewThreadBtn.classList.add('hidden');
 
         chatFlowContainer.classList.add('hidden');
         welcomeView.classList.remove('hidden');
-        if(mobileNewThreadBtn) mobileNewThreadBtn.classList.add('hidden');
 
         const originalHTML = 'Te damos la bienvenida a Brújula Electoral,<br>Tu guía electoral para el 2026. Pregunta lo que necesites.';
         welcomeHeading.innerHTML = originalHTML;
@@ -424,6 +425,13 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             showWelcomeScreenNoAnimation();
             closeMenu();
+        });
+    }
+
+    if (mobileNewThreadBtn) {
+        mobileNewThreadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showWelcomeScreenNoAnimation();
         });
     }
 });
