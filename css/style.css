@@ -82,10 +82,24 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .response-footer{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:16px;border-top:1px solid var(--border-color)}
 .sources-button{display:flex;align-items:center;gap:8px;background-color:var(--primary-purple);color:#fff;border:none;padding:8px 12px 8px 16px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,.1);transition:var(--transition-fast)}.sources-button.glow-animation{animation:pulse-glow 1.5s 1 .5s}.sources-button:hover{background-color:var(--primary-purple-dark);box-shadow:0 4px 10px rgba(0,0,0,.15);transform:translateY(-2px)}.sources-button:active{transform:translateY(0);box-shadow:0 2px 5px rgba(0,0,0,.1);background-color:#5838d0}
 .notification-badge{display:flex;align-items:center;justify-content:center;width:22px;height:22px;background-color:var(--primary-purple-dark);color:#fff;border-radius:50%;font-size:12px;font-weight:700}
-.feedback-buttons{display:flex;align-items:center;gap:4px}.feedback-buttons button{background:0 0;border:none;cursor:pointer;color:var(--text-light);padding:8px;border-radius:50%;position:relative;transition:var(--transition-fast)}
+.feedback-buttons{display:flex;align-items:center;gap:4px}.feedback-buttons button{background:0 0;border:none;cursor:pointer;color:var(--text-light);padding:8px;border-radius:50%;position:relative;transition:var(--transition-fast);width: 24px;height: 24px;display: flex;align-items: center;justify-content: center}
 .feedback-buttons button:hover{color:var(--primary-purple)}.feedback-buttons button:active{transform:scale(.9)}.feedback-buttons button.active{background-color:var(--light-purple);color:var(--primary-purple)}
 .feedback-buttons button.copied { color: var(--success-color) !important; background-color: rgba(26, 169, 157, 0.1); }
 .feedback-buttons button::after{content:attr(data-tooltip);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background-color:var(--text-dark);color:#fff;padding:4px 8px;border-radius:4px;font-size:12px;white-space:nowrap;opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease}.feedback-buttons button:hover::after{opacity:1;visibility:visible}
+.icon-thumb-up,
+.icon-copy,
+.icon-check {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
 .icon-thumb-up{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3'%3E%3C/path%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3'%3E%3C/path%3E%3C/svg%3E")}
 .icon-copy{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='13' height='13' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'%3E%3C/path%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='13' height='13' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'%3E%3C/path%3E%3C/svg%3E")}
 .icon-check{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E")}
