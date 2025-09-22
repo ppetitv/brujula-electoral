@@ -72,7 +72,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .rpp-disclaimer svg { width: 16px; height: 16px; color: #1AA99D; }
 #chat-flow-container { display: flex; flex-direction: column; height: 100%; }
 .chat-log { flex-grow: 1; padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 900px; width: 100%; margin: 0 auto; }
-.user-bubble { align-self: flex-end; background-color: #13026122; color: #ffffff; padding: 12px 20px; border-radius: 20px 20px 4px 20px; max-width: 80%; font-weight: 500; }
+.user-bubble { align-self: flex-end; background-color: #1302612e; color: #000000; padding: 12px 20px; border-radius: 20px 20px 4px 20px; max-width: 80%; font-weight: 500; }
 .assistant-response { display: flex; align-items: flex-start; gap: 12px; max-width: 100%; }
 .assistant-response .logo-brujula { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; box-shadow: var(--shadow); }
 .assistant-response .response-content { flex-grow: 1; color: #374151; line-height: 1.6; }
@@ -111,6 +111,23 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .sticky-input-wrapper{position:sticky;bottom:0;background-image:linear-gradient(to top,var(--chat-bg) 80%,rgba(247,247,247,0));padding:16px 24px}
 #chat-search-container{max-width:900px;margin:0 auto}
 
+.sponsor-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.sponsor-text {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+}
+
+.sponsor-logo {
+    max-width: 270px;
+    width: 100%;
+    height: auto;
+}
+
 @media (max-width:768px){
     body{background-color:var(--card-bg)}.app-container{flex-direction:column}
     .sidebar{position:fixed;top:0;left:-280px;z-index:1001;height:100%;box-shadow:0 0 60px rgba(0,0,0,.2);background-color:var(--card-bg)}
@@ -136,6 +153,12 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     .source-item { gap: 12px; padding: 12px; }
     .source-item-img { width: 80px; height: 80px; }
     .source-item-text h4 { font-size: 0.9rem; }
+    .sponsor-section {
+        margin-top: 24px;
+    }
+    .sponsor-logo {
+        max-width: 200px;
+    }
 }
 /* Hide login button */
 .nav-button.iniciar-sesion, .mobile-user-icon {
