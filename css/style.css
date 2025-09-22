@@ -322,3 +322,16 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(255, 120, 0, 0.2);
 }
+
+.responsive-table,
+.sponsored-content-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.responsive-table.visible,
+.sponsored-content-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

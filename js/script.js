@@ -222,23 +222,69 @@ document.addEventListener('DOMContentLoaded', function () {
         container.appendChild(responseWrapper);
         responseWrapper.innerHTML = htmlContent;
 
+        // Ocultar los componentes especiales inicialmente
+        const table = responseWrapper.querySelector('.responsive-table');
+        const sponsoredCard = responseWrapper.querySelector('.sponsored-content-card');
+        
+        if (table) table.style.display = 'none';
+        if (sponsoredCard) sponsoredCard.style.display = 'none';
+
         const allTextNodes = [];
-        const treeWalker = document.createTreeWalker(responseWrapper, NodeFilter.SHOW_TEXT, null, false);
+        const treeWalker = document.createTreeWalker(
+            responseWrapper,
+            NodeFilter.SHOW_TEXT,
+            {
+                acceptNode: function(node) {
+                    // Ignorar nodos de texto dentro de los componentes especiales
+                    if (node.parentElement.closest('.responsive-table') || 
+                        node.parentElement.closest('.sponsored-content-card')) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            }
+        );
+
         let currentNode;
-        while(currentNode = treeWalker.nextNode()) {
+        while (currentNode = treeWalker.nextNode()) {
             if (currentNode.textContent.trim().length > 0) {
-                allTextNodes.push({ node: currentNode, text: currentNode.textContent });
+                allTextNodes.push({ 
+                    node: currentNode, 
+                    text: currentNode.textContent,
+                    // Guardar referencia al componente especial que sigue, si existe
+                    nextComponent: currentNode.parentElement.nextElementSibling?.classList.contains('responsive-table') ? 'table' :
+                                 currentNode.parentElement.nextElementSibling?.classList.contains('sponsored-content-card') ? 'card' : null
+                });
                 currentNode.textContent = '';
             }
         }
 
         const typingSpeed = 10;
         for (const item of allTextNodes) {
-            const { node, text } = item;
+            const { node, text, nextComponent } = item;
+            
             for (let i = 0; i < text.length; i++) {
                 await new Promise(resolve => setTimeout(resolve, typingSpeed));
                 node.textContent += text[i];
                 scrollToBottom();
+            }
+
+            // Mostrar componente especial después del texto correspondiente
+            if (nextComponent) {
+                await new Promise(resolve => setTimeout(resolve, 500)); // Pequeña pausa
+                
+                if (nextComponent === 'table' && table) {
+                    table.style.display = '';
+                    await new Promise(resolve => setTimeout(resolve, 50));
+                    table.classList.add('visible');
+                } else if (nextComponent === 'card' && sponsoredCard) {
+                    sponsoredCard.style.display = '';
+                    await new Promise(resolve => setTimeout(resolve, 50));
+                    sponsoredCard.classList.add('visible');
+                }
+                
+                scrollToBottom();
+                await new Promise(resolve => setTimeout(resolve, 500)); // Pausa después del componente
             }
         }
         
