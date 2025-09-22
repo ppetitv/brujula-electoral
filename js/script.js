@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatLog.insertAdjacentHTML('beforeend', assistantResponseHTML);
         
         const preloaderText = chatLog.querySelector('.preloader-text');
-        const messages = ["Verificando fuentes de RPP...", "Construyendo respuesta..."];
+        const messages = ["Verificando fuentes de RPP...", "Construyendo respuesta...", "Potenciando esta consulta gracias a Marca Patrocinadora"];
         let messageIndex = 0;
         if (preloaderText) {
             preloaderText.textContent = messages[messageIndex];
@@ -246,6 +246,13 @@ document.addEventListener('DOMContentLoaded', function () {
         
         container.insertAdjacentHTML('beforeend', finalComponentsHTML);
         container.insertAdjacentHTML('beforeend', sourcesViewHTML);
+
+        const sponsorHTML = `
+            <div class="sponsor-block">
+                <p class="sponsor-text-footer">Esta respuesta fue posible gracias al apoyo de:</p>
+                <img src="images/logo_marca.png" alt="Logo del patrocinador" class="sponsor-logo-footer">
+            </div>`;
+        container.insertAdjacentHTML('beforeend', sponsorHTML);
 
         scrollToBottom();
 
