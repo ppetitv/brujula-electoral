@@ -5,7 +5,7 @@
     --chat-bg: #f7f7f7;
     --primary-purple: #7a5cff;
     --primary-purple-dark: #6a48f2;
-    --light-purple: #f3f0ff;
+    --light-purple: #eeeaff;
     --text-dark: #1e1e1e;
     --text-light: #6b7280;
     --text-suggestion: #2c2a50;
@@ -146,7 +146,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     .sidebar{position:fixed;top:0;left:-280px;z-index:1001;height:100%;box-shadow:0 0 60px rgba(0,0,0,.2);background-color:var(--card-bg)}
     .sidebar.visible{left:0}
     .mobile-header{position:sticky;top:0;z-index:999;display:flex;padding:12px 16px;border-bottom:1px solid rgba(229,231,255,.5);align-items:center;justify-content:flex-start;gap:16px;background-color:rgba(255,255,255,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-    .nuevo-hilo-compact{margin-left:auto;padding:8px;border-radius:50%;background-color:var(--light-purple);color:var(--primary-purple)}
+    .nuevo-hilo-compact{margin-left:auto;padding:8px;border-radius:50%;border: 1px solid var(--border-color);background-color:var(--light-purple);color:var(--primary-purple)}
     .main-content-wrapper{padding:0;overflow:visible;max-height:none}
     .main-content{z-index:1;padding:0;border:none;margin-top:0;box-shadow:none;border-radius:0}
     #welcome-view{padding:16px}
