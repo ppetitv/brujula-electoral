@@ -136,87 +136,56 @@ document.addEventListener('DOMContentLoaded', function () {
         chatLog.insertAdjacentHTML('beforeend', assistantResponseHTML);
         
         const preloaderText = chatLog.querySelector('.preloader-text');
-        // Primero, actualicemos los mensajes para asegurar que el último sea más notorio
+        
         const messages = [
             {
                 text: "Verificando fuentes de RPP",
                 icon: "🔍",
-                duration: 2000
+                duration: 1500
             },
             {
                 text: "Analizando información",
                 icon: "⚡",
-                duration: 2000
+                duration: 1500
             },
             {
                 text: "Construyendo respuesta",
                 icon: "🔄",
-                duration: 2000
+                duration: 1500
             },
             {
                 text: "Potenciando esta consulta gracias a BCP",
                 isSponsored: true,
                 icon: "✨",
-                duration: 3000
+                duration: 2000
             }
         ];
 
-        let messageIndex = 0;
-        if (preloaderText) {
-            const messages = [
-                {
-                    text: "Verificando fuentes de RPP",
-                    icon: "🔍",
-                    duration: 2000
-                },
-                {
-                    text: "Analizando información",
-                    icon: "⚡",
-                    duration: 2000
-                },
-                {
-                    text: "Construyendo respuesta",
-                    icon: "🔄",
-                    duration: 2000
-                },
-                {
-                    text: "Potenciando esta consulta gracias a BCP",
-                    isSponsored: true,
-                    icon: "✨",
-                    duration: 3000
-                }
-            ];
+        let currentMessageIndex = 0;
 
-            const updatePreloader = () => {
-                const message = messages[messageIndex];
-                preloaderText.className = 'preloader-text';
-                
-                if (message.isSponsored) {
-                    preloaderText.className += ' sponsored';
-                }
-
-                preloaderText.innerHTML = `
-                    <div class="preloader-message ${message.isSponsored ? 'sponsored-message' : ''}">
-                        <span class="preloader-icon">${message.icon}</span>
-                        <span class="preloader-text-content">${message.text}</span>
-                        <div class="loading-dots">
-                            <span></span><span></span><span></span>
-                        </div>
+        const updatePreloader = () => {
+            const message = messages[currentMessageIndex];
+            preloaderText.innerHTML = `
+                <div class="preloader-message ${message.isSponsored ? 'sponsored-message' : ''}">
+                    <span class="preloader-icon">${message.icon}</span>
+                    <span class="preloader-text-content">${message.text}</span>
+                    <div class="loading-dots">
+                        <span></span><span></span><span></span>
                     </div>
-                `;
-            };
+                </div>
+            `;
+            preloaderText.className = `preloader-text ${message.isSponsored ? 'sponsored' : ''}`;
+        };
 
-            const showMessages = async () => {
-                for (let i = 0; i < messages.length; i++) {
-                    messageIndex = i;
-                    updatePreloader();
-                    await new Promise(resolve => setTimeout(resolve, messages[i].duration));
-                }
-            };
+        const showNextMessage = async () => {
+            for (let i = 0; i < messages.length; i++) {
+                currentMessageIndex = i;
+                updatePreloader();
+                await new Promise(resolve => setTimeout(resolve, messages[i].duration));
+            }
+        };
 
-            // Iniciar la secuencia de mensajes
-            showMessages();
-        }
+        showNextMessage();
 
         setTimeout(() => {
             if (chatLog.dataset.intervalId) {
