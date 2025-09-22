@@ -37,7 +37,7 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);z-index:999;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}.overlay.visible{opacity:1;visibility:visible}.body-no-scroll{overflow:hidden}
 .main-content-wrapper { flex-grow: 1; display: flex; flex-direction: column; padding: 20px; max-height: 100vh; overflow: hidden; }
 .main-content { flex-grow: 1; display: flex; flex-direction: column; background-color: var(--chat-bg); border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); position: relative; overflow-y: auto; border: solid 1px #e1e1e1cc; }
-#welcome-view { background-color: var(--content-bg); padding: 20px; text-align: center; }
+#welcome-view { padding: 20px; text-align: center; }
 .logo-brujula img { opacity:.9; width:90px; height:90px; border-radius:22px; margin: 0 auto 24px; box-shadow:0 10px 25px rgba(0,0,0,.08); }
 h1#welcome-heading { color: #2c2a50; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; line-height: 1.4; margin-bottom: 32px; min-height: 120px; }
 h1#welcome-heading::after { content: '|'; animation: blink 1s step-end infinite; font-weight: 100; color: #ccc; }
