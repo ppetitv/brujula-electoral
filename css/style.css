@@ -72,7 +72,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .rpp-disclaimer svg { width: 16px; height: 16px; color: #1AA99D; }
 #chat-flow-container { display: flex; flex-direction: column; height: 100%; }
 .chat-log { flex-grow: 1; padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 900px; width: 100%; margin: 0 auto; }
-.user-bubble { align-self: flex-end; background-color: #130261; color: #ffffff; padding: 12px 20px; border-radius: 20px 20px 4px 20px; max-width: 80%; font-weight: 500; }
+.user-bubble { align-self: flex-end; background-color: #13026122; color: #ffffff; padding: 12px 20px; border-radius: 20px 20px 4px 20px; max-width: 80%; font-weight: 500; }
 .assistant-response { display: flex; align-items: flex-start; gap: 12px; max-width: 100%; }
 .assistant-response .logo-brujula { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; box-shadow: var(--shadow); }
 .assistant-response .response-content { flex-grow: 1; color: #374151; line-height: 1.6; }
