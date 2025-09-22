@@ -183,15 +183,15 @@ document.addEventListener('DOMContentLoaded', function () {
                             </tbody>
                         </table>
                     </div>
-                    <p>Investigar puede ser complejo. Por eso, nuestro aliado en transparencia, <strong>OjoPúblico</strong>, ha preparado una guía completa para ti.</p>
-                    <div class="sponsored-content-card">
+                    <p>Para tomar decisiones importantes, la información es tu mejor herramienta. Un voto informado es un voto por el progreso de todos.</p>
+                    <div class="sponsored-content-card" style="background-color: #002A8D;">
                         <div class="sponsor-logo-container">
-                            <img src="https://ojopublico.com/themes/ojo-publico/assets/images/logo-ojo-publico-white.svg" alt="Logo OjoPúblico" class="sponsor-logo-small">
+                            <img src="images/logo_bcp_white.svg" alt="Logo BCP" class="sponsor-logo-small">
                         </div>
                         <div class="sponsor-content-text">
-                            <h4>La Guía Definitiva para Investigar a tu Candidato</h4>
-                            <p>Aprende a verificar antecedentes, declaraciones juradas y más, paso a paso. Un recurso gratuito de OjoPúblico.</p>
-                            <a href="https://ojopublico.com/" target="_blank" class="sponsor-cta-button">Descargar Guía</a>
+                            <h4>Construye un Futuro Seguro</h4>
+                            <p>Así como eliges lo mejor para tus finanzas, elige con responsabilidad a tus representantes. BCP, comprometidos con el progreso del Perú.</p>
+                            <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button" style="background-color: #FF7800;">Conoce más sobre BCP</a>
                         </div>
                     </div>
                     <p>Recuerda que fiscalizar a los candidatos es nuestro derecho y deber como ciudadanos. ¡Un elector informado fortalece la democracia! 🇵🇪</p>
@@ -293,8 +293,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const sponsorHTML = `
             <div class="sponsor-block">
-                <p class="sponsor-text-footer">Esta respuesta fue posible gracias al apoyo de:</p>
-                <img src="images/logo_marca.png" alt="Logo del patrocinador" class="sponsor-logo-footer">
+                <p class="sponsor-text-footer">Contenido de confianza, presentado por:</p>
+                <a href="https://www.viabcp.com/" target="_blank"><img src="images/logo_bcp.svg" alt="Logo BCP" class="sponsor-logo-footer" style="max-width: 100px;"></a>
             </div>`;
         container.insertAdjacentHTML('beforeend', sponsorHTML);
 
