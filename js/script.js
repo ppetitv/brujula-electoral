@@ -393,9 +393,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const welcomeView = document.getElementById('welcome-view');
         const chatFlowContainer = document.getElementById('chat-flow-container');
         const welcomeHeading = document.getElementById('welcome-heading');
+        const mobileNewThreadBtn = document.getElementById('mobile-new-thread-btn');
 
         chatFlowContainer.classList.add('hidden');
         welcomeView.classList.remove('hidden');
+        if(mobileNewThreadBtn) mobileNewThreadBtn.classList.add('hidden');
 
         const originalHTML = 'Te damos la bienvenida a Brújula Electoral,<br>Tu guía electoral para el 2026. Pregunta lo que necesites.';
         welcomeHeading.innerHTML = originalHTML;
