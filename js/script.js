@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatLog.insertAdjacentHTML('beforeend', assistantResponseHTML);
         
         const preloaderText = chatLog.querySelector('.preloader-text');
-        const messages = ["Verificando fuentes de RPP...", "Construyendo respuesta...", "Potenciando esta consulta gracias a Marca Patrocinadora"];
+        const messages = ["Verificando fuentes de RPP...", "Construyendo respuesta...", "Potenciando esta consulta gracias a Marca Patrocinadora", "Potenciando esta consulta gracias a Marca Patrocinadora"];
         let messageIndex = 0;
         if (preloaderText) {
             preloaderText.textContent = messages[messageIndex];
