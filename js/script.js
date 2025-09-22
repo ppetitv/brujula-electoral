@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fullResponseText = `
                     <p>¡Claro que sí! Verificar los antecedentes de un candidato es un paso fundamental para un voto informado. 🗳️ Aquí te explico cómo hacerlo usando las plataformas oficiales:</p>
                     <p>El Jurado Nacional de Elecciones (JNE) centraliza esta información en su plataforma <strong>"Voto Informado"</strong>. Además, existen otros registros públicos que puedes consultar.</p>
-                    <div class="responsive-table">
+                    <div class="responsive-table hidden-initially">
                         <table>
                             <thead>
                                 <tr>
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         </table>
                     </div>
                     <p>Para tomar decisiones importantes, la información es tu mejor herramienta. Un voto informado es un voto por el progreso de todos.</p>
-                    <div class="sponsored-content-card">
+                    <div class="sponsored-content-card hidden-initially">
                         <div class="sponsor-logo-container">
                             <img src="images/logo_bcp_white.svg" alt="Logo BCP" class="sponsor-logo-small">
                         </div>
@@ -211,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             
             animateText(fullResponseText, responseContent);
+            setupScrollAnimations();
             
         }, isPreloaded ? 100 : 4000);
     }
@@ -486,3 +487,25 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+function setupScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.responsive-table, .sponsored-content-card');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('hidden-initially');
+                entry.target.classList.add('fade-in-up');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the item is visible
+    });
+
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
