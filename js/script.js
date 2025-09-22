@@ -309,7 +309,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const copyBtn = container.querySelector("#copy-response-btn");
 
         sourcesBtn.classList.add('glow-animation');
-        setupFeedbackButtons(container.querySelector(".feedback-buttons"));
+        const feedbackButtonsContainer = container.querySelector(".feedback-buttons");
+        setupFeedbackButtons(feedbackButtonsContainer);
 
         sourcesBtn.addEventListener('click', () => {
             relatedSection.style.opacity = '0';
