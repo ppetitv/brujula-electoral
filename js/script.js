@@ -136,23 +136,28 @@ document.addEventListener('DOMContentLoaded', function () {
         chatLog.insertAdjacentHTML('beforeend', assistantResponseHTML);
         
         const preloaderText = chatLog.querySelector('.preloader-text');
+        // Primero, actualicemos los mensajes para asegurar que el último sea más notorio
         const messages = [
             {
                 text: "Verificando fuentes de RPP",
-                icon: "🔍"
+                icon: "🔍",
+                duration: 2000
             },
             {
                 text: "Analizando información",
-                icon: "⚡"
+                icon: "⚡",
+                duration: 2000
             },
             {
                 text: "Construyendo respuesta",
-                icon: "🔄"
+                icon: "🔄",
+                duration: 2000
             },
             {
                 text: "Potenciando esta consulta gracias a BCP",
                 isSponsored: true,
-                icon: "✨"
+                icon: "✨",
+                duration: 3000 // Mayor duración para el mensaje patrocinado
             }
         ];
 
@@ -161,27 +166,40 @@ document.addEventListener('DOMContentLoaded', function () {
             const updatePreloader = () => {
                 const message = messages[messageIndex];
                 preloaderText.className = 'preloader-text';
+                
                 if (message.isSponsored) {
                     preloaderText.className += ' sponsored';
+                    // Aseguramos que el mensaje patrocinado sea visible
+                    preloaderText.style.display = 'flex';
+                    preloaderText.style.opacity = '1';
                 }
+
                 preloaderText.innerHTML = `
-                    ${message.icon}
-                    ${message.text}
-                    <div class="loading-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <div class="preloader-message ${message.isSponsored ? 'sponsored-message' : ''}">
+                        <span class="preloader-icon">${message.icon}</span>
+                        <span class="preloader-text-content">${message.text}</span>
+                        <div class="loading-dots">
+                            <span></span><span></span><span></span>
+                        </div>
                     </div>
                 `;
             };
 
             updatePreloader();
-            const intervalId = setInterval(() => {
-                messageIndex = (messageIndex + 1) % messages.length;
-                updatePreloader();
-            }, 2000); // Aumentamos el tiempo para mejor legibilidad
             
-            chatLog.dataset.intervalId = intervalId;
+            // Usamos setTimeout en lugar de setInterval para controlar mejor los tiempos
+            const showNextMessage = () => {
+                const currentMessage = messages[messageIndex];
+                setTimeout(() => {
+                    messageIndex = (messageIndex + 1) % messages.length;
+                    updatePreloader();
+                    if (messageIndex < messages.length) {
+                        showNextMessage();
+                    }
+                }, currentMessage.duration);
+            };
+            
+            showNextMessage();
         }
 
         setTimeout(() => {
