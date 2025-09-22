@@ -141,51 +141,49 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 text: "Verificando fuentes de RPP",
                 icon: "🔍",
-                duration: 1500
+                duration: 2000
             },
             {
                 text: "Analizando información",
                 icon: "⚡",
-                duration: 1500
+                duration: 2000
             },
             {
                 text: "Construyendo respuesta",
                 icon: "🔄",
-                duration: 1500
+                duration: 2000
             },
             {
                 text: "Potenciando esta consulta gracias a BCP",
                 isSponsored: true,
                 icon: "✨",
-                duration: 2000
+                duration: 2500
             }
         ];
 
         let currentMessageIndex = 0;
 
-        const updatePreloader = () => {
-            const message = messages[currentMessageIndex];
-            preloaderText.innerHTML = `
-                <div class="preloader-message ${message.isSponsored ? 'sponsored-message' : ''}">
-                    <span class="preloader-icon">${message.icon}</span>
-                    <span class="preloader-text-content">${message.text}</span>
-                    <div class="loading-dots">
-                        <span></span><span></span><span></span>
+        const showMessages = async () => {
+            for (const message of messages) {
+                preloaderText.innerHTML = `
+                    <div class="preloader-message ${message.isSponsored ? 'sponsored-message' : ''}">
+                        <span class="preloader-icon">${message.icon}</span>
+                        <span class="preloader-text-content">${message.text}</span>
+                        <div class="loading-dots">
+                            <span></span><span></span><span></span>
+                        </div>
                     </div>
-                </div>
-            `;
-            preloaderText.className = `preloader-text ${message.isSponsored ? 'sponsored' : ''}`;
-        };
-
-        const showNextMessage = async () => {
-            for (let i = 0; i < messages.length; i++) {
-                currentMessageIndex = i;
-                updatePreloader();
-                await new Promise(resolve => setTimeout(resolve, messages[i].duration));
+                `;
+                preloaderText.className = `preloader-text ${message.isSponsored ? 'sponsored' : ''}`;
+                await new Promise(resolve => setTimeout(resolve, message.duration));
             }
         };
 
-        showNextMessage();
+        // Ejecutar la secuencia de mensajes
+        showMessages();
+
+        // Ajustar el tiempo total para que coincida con la suma de las duraciones
+        const totalDuration = messages.reduce((sum, msg) => sum + msg.duration, 0) + 500;
 
         setTimeout(() => {
             if (chatLog.dataset.intervalId) {
@@ -255,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
             animateText(fullResponseText, responseContent);
             setupScrollAnimations();
             
-        }, isPreloaded ? 100 : 4000);
+        }, isPreloaded ? 100 : totalDuration);
     }
     
     async function animateText(htmlContent, container) {
