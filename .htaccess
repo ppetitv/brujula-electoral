@@ -1,0 +1,27 @@
+# Habilitar CORS
+Header set Access-Control-Allow-Origin "*"
+
+# Comprimir archivos
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/javascript
+
+# Caché del navegador
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+const BASE_URL = window.location.origin + '/brujula-electoral/';
+
+// Usar BASE_URL para las rutas
+const loadImage = (path) => {
+    return `${BASE_URL}${path}`;
+}

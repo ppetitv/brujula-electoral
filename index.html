@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brújula Electoral - Tu Guía Electoral para el 2026 | RPP</title>
     <meta name="description" content="Resuelve todas tus inquietudes sobre el proceso electoral del 2026 en Perú con Brújula Electoral, el asistente virtual con información verificada de RPP.">
-    <link rel="stylesheet" href="css//style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#7a5cff">
+    <link rel="canonical" href="https://rpp.pe/brujula-electoral" />
+    <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components/buttons.css">
@@ -16,6 +19,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Precargar recursos críticos -->
+    <link rel="preload" href="css/base.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="images/logo_brujula_electoral_ani.gif" as="image">
 </head>
 <body>
 
@@ -97,6 +105,8 @@
     </div>
 
     <div class="overlay"></div>
+    <!-- Agregar fallback para navegadores antiguos -->
     <script type="module" src="js/main.js"></script>
+    <script nomodule src="js/main-legacy.js"></script>
 </body>
 </html>
