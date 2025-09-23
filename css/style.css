@@ -245,68 +245,58 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 }
 
 .sponsored-content-card {
-    position: relative;
-    border-radius: 12px;
-    padding: 16px 18px;
+    border-radius: 16px;
+    padding: 24px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 14px;
-    box-shadow: 0 4px 12px rgba(0, 42, 141, 0.10);
-    margin: 1em 0;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 8px 20px rgba(0, 42, 141, 0.15);
+    margin: 1.5em 0em;
     background-color: #002A8D; /* BCP Blue */
     color: #ffffff;
-    min-height: 70px;
-    max-width: 420px;
 }
 
 .sponsored-content-card .sponsor-logo-container {
-    margin-bottom: 0;
-    flex-shrink: 0;
+    margin-bottom: 8px;
 }
 
 .sponsored-content-card .sponsor-logo-small {
-    max-height: 28px; /* Control logo size */
+    max-height: 30px; /* Control logo size */
     width: auto;
 }
 
-.sponsored-content-card .sponsor-content-text {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
 .sponsored-content-card .sponsor-content-text h4 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    margin: 0 0 2px 0;
-    color: #fff;
+    margin: 0 0 8px 0;
+    color: #ffffff;
 }
 
 .sponsored-content-card .sponsor-content-text p {
-    font-size: 0.92rem;
-    line-height: 1.4;
-    margin: 0 0 6px 0;
-    opacity: 0.92;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+    opacity: 0.9;
 }
 
 .sponsor-cta-button {
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 0.92rem;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
     font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     background-color: #FF7800; /* BCP Orange */
-    color: #fff;
+    color: #ffffff;
     border: none;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.15s;
 }
 
 .sponsor-cta-button:hover {
-    background-color: #E66A00; /* Darker orange for hover */
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(255, 120, 0, 0.12);
+    background-color: #E66A00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 120, 0, 0.2);
 }
 
 .responsive-table,
