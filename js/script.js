@@ -40,11 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function animateWelcomeHeading() {
         if (!welcomeHeading) return;
-        
-        const logo = document.querySelector('#welcome-view .logo-brujula');
-        if (logo) {
-            logo.classList.add('visible');
-        }
+
+        const welcomeView = document.getElementById('welcome-view');
 
         const originalHTML = welcomeHeading.innerHTML;
         const lines = originalHTML.split('<br>').map(line => line.trim());
@@ -66,10 +63,12 @@ document.addEventListener('DOMContentLoaded', function () {
         
         welcomeHeading.classList.add('animation-complete');
         
-        const elementsToAnimate = document.querySelectorAll('#welcome-view .fade-in-item:not(.logo-brujula)');
-        elementsToAnimate.forEach(el => {
-            el.classList.add('visible');
-        });
+        // Pequeña pausa y luego iniciar la animación de subida y aparición
+        setTimeout(() => {
+            if (welcomeView) {
+                welcomeView.classList.add('animation-started');
+            }
+        }, 300);
     }
 
     // --- Lógica de la Vista de Chat ---

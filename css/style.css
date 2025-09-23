@@ -47,18 +47,63 @@ body { font-family: var(--font-family); background-color: var(--content-bg); col
 .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5);z-index:999;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}.overlay.visible{opacity:1;visibility:visible}.body-no-scroll{overflow:hidden}
 .main-content-wrapper { flex-grow: 1; display: flex; flex-direction: column; padding: 20px; max-height: 100vh; overflow: hidden; }
 .main-content { flex-grow: 1; display: flex; flex-direction: column; background-color: var(--chat-bg); border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); position: relative; overflow-y: auto; border: solid 1px #e1e1e1cc; }
-#welcome-view { padding: 20px; text-align: center; }
+#welcome-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically by default */
+    text-align: center;
+    height: 100%;
+    padding: 20px;
+    transition: justify-content 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Animate the alignment */
+}
+
+#welcome-view.animation-started {
+    justify-content: flex-start; /* Move content to the top */
+}
+
+.welcome-center-group {
+    /* This group will be animated upwards */
+    transition: margin-top 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#welcome-view.animation-started .welcome-center-group {
+    margin-top: 5vh; /* Adjust this value for final top position */
+}
+
 .logo-brujula img { opacity:.9; width:90px; height:90px; border-radius:22px; margin: 0 auto 24px; }
 h1#welcome-heading { color: #2c2a50; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; line-height: 1.4; margin-bottom: 32px; min-height: 120px; }
 h1#welcome-heading::after { content: '|'; animation: blink 1s step-end infinite; font-weight: 100; color: #ccc; }
 h1#welcome-heading.animation-complete::after { content: ''; }
-.fade-in-item { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.fade-in-item.visible { opacity: 1; transform: translateY(0); }
-#welcome-view .logo-brujula { transition-delay: 0s; }
-#welcome-view .search-container-wrapper { transition-delay: 0.1s; }
-#welcome-view .rpp-disclaimer { transition-delay: 0.2s; }
-#welcome-view .suggestion-title { transition-delay: 0.3s; }
-#welcome-view .suggestions-grid { transition-delay: 0.4s; }
+
+/* Fade-in items are now the containers that appear after the main animation */
+.fade-in-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* The logo is part of the initial view, so it's always visible */
+.welcome-center-group .logo-brujula {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* When animation starts, the rest of the items fade in with a delay */
+#welcome-view.animation-started .search-container-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+#welcome-view.animation-started .suggestions-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+#welcome-view.animation-started .sponsor-section {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
 .suggestion-title { font-size:.8rem; font-weight:600; color:var(--text-light); letter-spacing:.5px; margin:40px 0 20px; }
 .suggestions-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); max-width: 900px; margin: 0 auto; }
 .suggestion-card { display:flex; padding:16px; border:1px solid var(--border-color); border-radius:12px; font-weight:600; text-decoration:none; color:var(--text-dark); text-align:left; align-items:center; justify-content:space-between; box-shadow:var(--shadow); transition:var(--transition-fast); background-color: var(--content-bg); cursor: pointer; }

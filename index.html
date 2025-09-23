@@ -44,24 +44,30 @@
             <main class="main-content">
                 <!-- VISTA INICIAL (BIENVENIDA) -->
                 <div id="welcome-view" class="chat-interface">
-                    <div class="logo-brujula fade-in-item"><img src="images/logo_brujula_electoral_ani.gif" alt="Logo Brújula Electoral"></div>
-                    <h1 id="welcome-heading">Te damos la bienvenida a Brújula Electoral,<br>Tu guía electoral para el 2026. Pregunta lo que necesites.</h1>
-                    <div class="search-container fade-in-item">
-                        <textarea id="prompt-textarea" placeholder="Pregunta cualquier tema" rows="1" aria-label="Pregunta cualquier tema"></textarea>
-                        <button class="send-button" aria-label="Enviar pregunta"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
+                    <div class="welcome-center-group">
+                        <div class="logo-brujula fade-in-item"><img src="images/logo_brujula_electoral_ani.gif" alt="Logo Brújula Electoral"></div>
+                        <h1 id="welcome-heading">Te damos la bienvenida a Brújula Electoral,<br>Tu guía electoral para el 2026. Pregunta lo que necesites.</h1>
                     </div>
-                    <div class="rpp-disclaimer fade-in-item">
-                        <p>Con información verificada de RPP.</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM12.03 5.97a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                    <div class="search-container-wrapper fade-in-item">
+                        <div class="search-container">
+                            <textarea id="prompt-textarea" placeholder="Pregunta cualquier tema" rows="1" aria-label="Pregunta cualquier tema"></textarea>
+                            <button class="send-button" aria-label="Enviar pregunta"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
+                        </div>
+                        <div class="rpp-disclaimer">
+                            <p>Con información verificada de RPP.</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM12.03 5.97a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+                        </div>
                     </div>
-                    <p class="suggestion-title fade-in-item">O EMPIEZA CON ALGUNA DE ESTAS CONSULTAS:</p>
-                    <div class="suggestions-grid fade-in-item">
-                        <a href="#" class="suggestion-card" data-question="¿Cómo saber si soy miembro de mesa?"><span>¿Cómo saber si soy miembro de mesa?</span></a>
-                        <a href="#" class="suggestion-card" data-question="¿Mi DNI vencido es válido para votar?"><span>¿Mi DNI vencido es válido para votar?</span></a>
-                        <a href="#" class="suggestion-card" data-question="¿Cómo saber donde es mi local de votación?"><span>¿Cómo saber donde es mi local de votación?</span></a>
-                        <a href="#" class="suggestion-card" data-question="¿Qué pasa si mi voto es nulo o inválido?"><span>¿Qué pasa si mi voto es nulo o inválido?</span></a>
-                        <a href="#" class="suggestion-card" data-question="¿El voto en blanco influye en la segunda vuelta?"><span>¿El voto en blanco influye en la segunda vuelta?</span></a>
-                        <a href="#" class="suggestion-card" data-question="¿Cómo puedo verificar si un candidato tiene antecedentes penales?"><span>¿Cómo puedo verificar si un candidato tiene antecedentes penales?</span></a>
+                    <div class="suggestions-wrapper fade-in-item">
+                        <p class="suggestion-title">O EMPIEZA CON ALGUNA DE ESTAS CONSULTAS:</p>
+                        <div class="suggestions-grid">
+                            <a href="#" class="suggestion-card" data-question="¿Cómo saber si soy miembro de mesa?"><span>¿Cómo saber si soy miembro de mesa?</span></a>
+                            <a href="#" class="suggestion-card" data-question="¿Mi DNI vencido es válido para votar?"><span>¿Mi DNI vencido es válido para votar?</span></a>
+                            <a href="#" class="suggestion-card" data-question="¿Cómo saber donde es mi local de votación?"><span>¿Cómo saber donde es mi local de votación?</span></a>
+                            <a href="#" class="suggestion-card" data-question="¿Qué pasa si mi voto es nulo o inválido?"><span>¿Qué pasa si mi voto es nulo o inválido?</span></a>
+                            <a href="#" class="suggestion-card" data-question="¿El voto en blanco influye en la segunda vuelta?"><span>¿El voto en blanco influye en la segunda vuelta?</span></a>
+                            <a href="#" class="suggestion-card" data-question="¿Cómo puedo verificar si un candidato tiene antecedentes penales?"><span>¿Cómo puedo verificar si un candidato tiene antecedentes penales?</span></a>
+                        </div>
                     </div>
                     <div class="sponsor-section fade-in-item">
                         <p class="sponsor-text">Con el apoyo de:</p>
