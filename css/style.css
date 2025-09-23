@@ -108,7 +108,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     gap: 12px;
     padding: 16px;
     border-radius: 12px;
-    background: var(--content-bg);
+    background: var(--bg-color);
     transition: all 0.3s ease;
     opacity: 1;
 }
@@ -226,6 +226,20 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     max-width: 270px;
     width: 100%;
     height: auto;
+}
+
+.sponsor-label {
+    font-size: 12px;
+    color: #FFD700;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    background: rgba(255, 215, 0, 0.12);
+    border-radius: 6px;
+    padding: 2px 10px;
+    margin-top: -4px;
+    margin-left: -2px;
 }
 
 @media (max-width:768px){

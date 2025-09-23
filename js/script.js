@@ -229,9 +229,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="images/logo_bcp_white.svg" alt="Logo BCP" class="sponsor-logo-small">
                         </div>
                         <div class="sponsor-content-text">
+                            <span class="sponsor-label">Contenido patrocinado</span>
                             <h4>Elige con confianza</h4>
-                            <p>Informarte es el primer paso para avanzar. En BCP creemos en el poder de las buenas decisiones, por ti y por el Perú.</p>
-                            <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button">Conoce más sobre BCP</a>
+                            <p>Informarte es el primer paso para avanzar. Así como te informas para votar, en BCP creemos en el poder de las buenas decisiones para tu futuro.</p>
+                            <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button">Descubre cómo tomar mejores decisiones</a>
                         </div>
                     </div>
                     <p>Recuerda que fiscalizar a los candidatos es nuestro derecho y deber como ciudadanos. ¡Un elector informado fortalece la democracia! 🇵🇪</p>
