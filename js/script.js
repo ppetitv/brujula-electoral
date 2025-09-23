@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     icon.classList.remove('icon-copy');
                     icon.classList.add('icon-check');
                     setTimeout(() => {
-                        copyBtn.setAttribute('data-tooltip', 'Copiar');
+                        copyBtn.setAttribute('data-tooltip', 'Copiar respuesta');
                         copyBtn.classList.remove('copied');
                         icon.classList.add('icon-copy');
                         icon.classList.remove('icon-check');
