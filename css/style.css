@@ -108,7 +108,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     gap: 12px;
     padding: 16px;
     border-radius: 12px;
-    background: var(--bg-color);
+    background: var(--content-bg);
     transition: all 0.3s ease;
     opacity: 1;
 }
