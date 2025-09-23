@@ -230,8 +230,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                         <div class="sponsor-content-text">
                             <h4>Elige con confianza</h4>
-                            <p>Informarte es el primer paso para avanzar. En BCP creemos en el poder de las buenas decisiones, por ti y por el Perú.</p>
-                            <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button">Conoce más sobre BCP</a>
+                            <p>Informarte es el primer paso para avanzar. Así como en tu voto, en BCP creemos en el poder de las buenas decisiones para tu futuro.</p>
+                            <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button">Descubre cómo tomar mejores decisiones</a>
                         </div>
                     </div>
                     <p>Recuerda que fiscalizar a los candidatos es nuestro derecho y deber como ciudadanos. ¡Un elector informado fortalece la democracia! 🇵🇪</p>
