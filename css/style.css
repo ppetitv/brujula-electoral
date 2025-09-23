@@ -84,7 +84,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 .chat-log { flex-grow: 1; padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 900px; width: 100%; margin: 0 auto; }
 .user-bubble { align-self: flex-end; background-color: #D1D6F6; color: #000000; padding: 12px 20px; border-radius: 20px 20px 4px 20px; max-width: 80%; font-weight: 500; }
 .assistant-response { display: flex; align-items: flex-start; gap: 12px; max-width: 100%; }
-.assistant-response .logo-brujula { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; box-shadow: var(--shadow); }
+.assistant-response .logo-brujula { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; }
 .assistant-response .response-content { flex-grow: 1; color: #374151; line-height: 1.6; }
 .assistant-response .response-content > div { transition: opacity 0.3s ease; }
 .assistant-response p { margin-bottom: 1em; }
@@ -93,8 +93,6 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     flex-direction: column;
     gap: 12px;
     padding: 16px;
-    background: rgb(247, 247, 255);
-    border-radius: 12px;
 }
 
 .preloader-text {
