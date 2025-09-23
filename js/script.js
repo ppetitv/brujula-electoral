@@ -229,8 +229,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             <img src="images/logo_bcp_white.svg" alt="Logo BCP" class="sponsor-logo-small">
                         </div>
                         <div class="sponsor-content-text">
-                            <h4>Construye un Futuro Seguro</h4>
-                            <p>Así como eliges lo mejor para tus finanzas, elige con responsabilidad a tus representantes. BCP, comprometidos con el progreso del Perú.</p>
+                            <h4>Elige con confianza</h4>
+                            <p>Informarte es el primer paso para avanzar. En BCP creemos en el poder de las buenas decisiones, por ti y por el Perú.</p>
                             <a href="https://www.viabcp.com/" target="_blank" class="sponsor-cta-button">Conoce más sobre BCP</a>
                         </div>
                     </div>
