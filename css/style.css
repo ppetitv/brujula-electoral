@@ -298,6 +298,8 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     width: 100%;
     border-collapse: collapse;
     background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .responsive-table th,
