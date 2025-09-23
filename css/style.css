@@ -344,26 +344,51 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     overflow: visible;
 }
 
-/* === Sponsor CTA Enhancements === */
+/* === Sponsor CTA Enhancements (Native Feel) === */
 .sponsored-content-card {
+    position: relative; /* For label positioning */
+    overflow: hidden; /* To clip the label to the border-radius */
     border-radius: 16px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    box-shadow: 0 8px 20px rgba(0, 42, 141, 0.15);
+    border-left: 5px solid #002A8D; /* Borde de acento con color sponsor */
+    box-shadow: var(--shadow); /* Sombra estándar de la app */
     margin: 1.5em 0em;
-    background-color: #002A8D; /* BCP Blue */
-    color: #ffffff;
+    background-color: var(--card-bg); /* Fondo nativo */
+    color: var(--text-dark); /* Texto nativo */
+    transition: var(--transition-fast);
+}
+
+.sponsored-content-card::after {
+    content: 'CONTENIDO PATROCINADO';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 6px 12px;
+    background-color: var(--light-purple);
+    color: var(--primary-purple);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-bottom-left-radius: 16px; /* Shape for the corner */
+    text-transform: uppercase;
+}
+
+.sponsored-content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
 .sponsored-content-card .sponsor-logo-container {
-    /* Styles for logo container if needed */
-    margin-bottom: 8px;
+    margin-bottom: 0;
 }
 
 .sponsored-content-card .sponsor-logo-small {
-    max-height: 30px; /* Control logo size */
+    /* Asumiendo que 'logo_bcp.svg' es el logo a color */
+    content: url('../images/logo_bcp.svg'); 
+    max-height: 30px;
     width: auto;
 }
 
@@ -371,14 +396,15 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     font-size: 1.1rem;
     font-weight: 700;
     margin: 0 0 8px 0;
-    color: #ffffff;
+    color: #002A8D; /* Título con color sponsor para branding */
 }
 
 .sponsored-content-card .sponsor-content-text p {
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0 0 16px 0;
-    opacity: 0.9;
+    color: var(--text-light); /* Color de texto secundario nativo */
+    opacity: 1;
 }
 
 .sponsor-cta-button {
@@ -388,17 +414,18 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     font-weight: 600;
     text-decoration: none;
     text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    background-color: #FF7800; /* BCP Orange */
+    transition: var(--transition-fast);
+    /* CTA con el color primario de la app para coherencia */
+    background-image: linear-gradient(to top, var(--primary-purple), var(--primary-purple-dark));
     color: #ffffff;
     border: none;
     cursor: pointer;
+    align-self: flex-start; /* Alinear a la izquierda */
 }
 
 .sponsor-cta-button:hover {
-    background-color: #E66A00; /* Darker orange for hover */
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(255, 120, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(106, 72, 242, 0.4); /* Sombra del botón nativo */
 }
 
 .responsive-table,
