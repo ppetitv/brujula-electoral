@@ -386,8 +386,6 @@ h1#welcome-heading.animation-complete::after { content: ''; }
 }
 
 .sponsored-content-card .sponsor-logo-small {
-    /* Asumiendo que 'logo_bcp.svg' es el logo a color */
-    content: url('../images/logo_bcp.svg'); 
     max-height: 30px;
     width: auto;
 }

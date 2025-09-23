@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p>Para tomar decisiones importantes, la información es tu mejor herramienta. Un voto informado es un voto por el progreso de todos.</p>
                     <div class="sponsored-content-card hidden-initially">
                         <div class="sponsor-logo-container">
-                            <img src="images/logo_bcp_white.svg" alt="Logo BCP" class="sponsor-logo-small">
+                            <img src="images/logo_bcp.svg" alt="Logo BCP" class="sponsor-logo-small">
                         </div>
                         <div class="sponsor-content-text">
                             <h4>Elige con confianza</h4>
