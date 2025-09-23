@@ -108,7 +108,7 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     gap: 12px;
     padding: 16px;
     border-radius: 12px;
-    background: var(--content-bg);
+    background: var(--bg-color);
     transition: all 0.3s ease;
     opacity: 1;
 }
@@ -283,6 +283,64 @@ h1#welcome-heading.animation-complete::after { content: ''; }
     max-width: 150px;
     height: auto;
     opacity: 0.8;
+}
+
+/* --- MAS SECTION (Recursos Interactivos) --- */
+.mas-section {
+    padding: 20px 0;
+    background: var(--light-purple);
+    border-radius: 12px;
+    margin: 24px 0;
+    box-shadow: 0 2px 8px rgba(122, 92, 255, 0.07);
+}
+.mas-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-purple);
+    margin-bottom: 4px;
+}
+.mas-desc {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 16px;
+}
+.mas-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.mas-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 1px 4px rgba(122, 92, 255, 0.05);
+    transition: box-shadow 0.2s;
+    text-decoration: none;
+    color: var(--primary-purple);
+    font-weight: 600;
+}
+.mas-card:hover {
+    box-shadow: 0 4px 12px rgba(122, 92, 255, 0.12);
+    background: var(--light-purple);
+    color: var(--primary-purple-dark);
+}
+.mas-icon {
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .mas-section {
+        margin: 16px 0;
+        padding: 16px 0;
+    }
+    .mas-card {
+        padding: 10px 12px;
+        font-size: 0.98em;
+    }
 }
 
 /* === Table Enhancements === */
