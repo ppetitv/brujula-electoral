@@ -40,32 +40,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function animateWelcomeHeading() {
         if (!welcomeHeading) return;
-        
+
         const logo = document.querySelector('#welcome-view .logo-brujula');
         if (logo) {
             logo.classList.add('visible');
         }
 
-        const originalHTML = welcomeHeading.innerHTML;
-        const lines = originalHTML.split('<br>').map(line => line.trim());
-        
-        welcomeHeading.innerHTML = '';
-        
-        const typingSpeed = 30;
-
-        for (let i = 0; i < lines.length; i++) {
-            const line = lines[i];
-            for (const char of line) {
-                welcomeHeading.innerHTML += char;
-                await new Promise(r => setTimeout(r, typingSpeed));
-            }
-            if (i < lines.length - 1) {
-                welcomeHeading.innerHTML += '<br>';
-            }
-        }
-        
+        // Mostrar el título completo inmediatamente
         welcomeHeading.classList.add('animation-complete');
-        
+
         const elementsToAnimate = document.querySelectorAll('#welcome-view .fade-in-item:not(.logo-brujula)');
         elementsToAnimate.forEach(el => {
             el.classList.add('visible');
