@@ -460,8 +460,12 @@ document.addEventListener('DOMContentLoaded', function () {
         let isDeleting = false;
         let typingSpeed = 100;
         let pauseTime = 2000;
+        let animationInterval;
+        let isAnimating = true;
 
         function typeWriter() {
+            if (!isAnimating) return;
+
             console.log('typeWriter ejecutándose, currentIndex:', currentIndex, 'currentCharIndex:', currentCharIndex, 'isDeleting:', isDeleting);
             const currentPlaceholder = placeholders[currentIndex];
 
@@ -473,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (currentCharIndex === currentPlaceholder.length) {
                     isDeleting = true;
-                    setTimeout(typeWriter, pauseTime);
+                    animationInterval = setTimeout(typeWriter, pauseTime);
                     return;
                 }
             } else {
@@ -485,13 +489,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (currentCharIndex < 0) {
                     isDeleting = false;
                     currentIndex = (currentIndex + 1) % placeholders.length;
-                    setTimeout(typeWriter, 500); // Pause before next placeholder
+                    animationInterval = setTimeout(typeWriter, 500); // Pause before next placeholder
                     return;
                 }
             }
 
-            setTimeout(typeWriter, isDeleting ? typingSpeed / 2 : typingSpeed);
+            animationInterval = setTimeout(typeWriter, isDeleting ? typingSpeed / 2 : typingSpeed);
         }
+
+        // Stop animation when user interacts with textarea
+        function stopAnimation() {
+            if (isAnimating) {
+                console.log('Deteniendo animación del placeholder');
+                isAnimating = false;
+                clearTimeout(animationInterval);
+                textarea.placeholder = "Pregunta cualquier tema"; // Reset to default
+            }
+        }
+
+        // Add event listeners to stop animation on user interaction
+        textarea.addEventListener('focus', stopAnimation);
+        textarea.addEventListener('input', stopAnimation);
+        textarea.addEventListener('keydown', stopAnimation);
 
         // Start the animation
         console.log('Iniciando animación');
