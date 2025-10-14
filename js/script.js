@@ -38,6 +38,12 @@ document.addEventListener('DOMContentLoaded', function () {
         animateWelcomeHeading();
     }
 
+    // --- Lógica del Placeholder Rotativo ---
+    const promptTextarea = document.getElementById('prompt-textarea');
+    if (promptTextarea) {
+        setupRotatingPlaceholder(promptTextarea);
+    }
+
     async function animateWelcomeHeading() {
         if (!welcomeHeading) return;
 
@@ -429,6 +435,54 @@ document.addEventListener('DOMContentLoaded', function () {
                 buttons.forEach(btn => btn.classList.remove("active"));
                 if (!wasActive) {
                     button.classList.add("active");
+                }
+            
+                function setupRotatingPlaceholder(textarea) {
+                    const placeholders = [
+                        "Pregunta cualquier tema",
+                        "¿Qué documentos necesito para votar en las elecciones?",
+                        "¿Cómo votan los peruanos que viven en el extranjero?",
+                        "¿Quiénes son los candidatos presidenciales para 2026?",
+                        "¿Qué pasa si no puedo votar el día de las elecciones?"
+                    ];
+            
+                    let currentIndex = 0;
+                    let currentCharIndex = 0;
+                    let isDeleting = false;
+                    let typingSpeed = 100;
+                    let pauseTime = 2000;
+            
+                    function typeWriter() {
+                        const currentPlaceholder = placeholders[currentIndex];
+            
+                        if (!isDeleting) {
+                            // Typing
+                            textarea.placeholder = currentPlaceholder.substring(0, currentCharIndex + 1);
+                            currentCharIndex++;
+            
+                            if (currentCharIndex === currentPlaceholder.length) {
+                                isDeleting = true;
+                                setTimeout(typeWriter, pauseTime);
+                                return;
+                            }
+                        } else {
+                            // Deleting
+                            textarea.placeholder = currentPlaceholder.substring(0, currentCharIndex);
+                            currentCharIndex--;
+            
+                            if (currentCharIndex < 0) {
+                                isDeleting = false;
+                                currentIndex = (currentIndex + 1) % placeholders.length;
+                                setTimeout(typeWriter, 500); // Pause before next placeholder
+                                return;
+                            }
+                        }
+            
+                        setTimeout(typeWriter, isDeleting ? typingSpeed / 2 : typingSpeed);
+                    }
+            
+                    // Start the animation
+                    typeWriter();
                 }
             });
         });
