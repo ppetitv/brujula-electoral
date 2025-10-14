@@ -46,8 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
             logo.classList.add('visible');
         }
 
-        // Mostrar el título completo inmediatamente
+        // Mostrar el título completo inmediatamente con fade-in
         welcomeHeading.classList.add('animation-complete');
+        welcomeHeading.classList.add('visible');
 
         const elementsToAnimate = document.querySelectorAll('#welcome-view .fade-in-item:not(.logo-brujula)');
         elementsToAnimate.forEach(el => {
