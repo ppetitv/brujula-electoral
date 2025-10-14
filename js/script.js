@@ -41,7 +41,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Lógica del Placeholder Rotativo ---
     const promptTextarea = document.getElementById('prompt-textarea');
     if (promptTextarea) {
+        console.log('Textarea encontrado, iniciando placeholder rotativo');
         setupRotatingPlaceholder(promptTextarea);
+    } else {
+        console.log('Textarea no encontrado');
     }
 
     async function animateWelcomeHeading() {
@@ -436,56 +439,63 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!wasActive) {
                     button.classList.add("active");
                 }
-            
-                function setupRotatingPlaceholder(textarea) {
-                    const placeholders = [
-                        "Pregunta cualquier tema",
-                        "¿Qué documentos necesito para votar en las elecciones?",
-                        "¿Cómo votan los peruanos que viven en el extranjero?",
-                        "¿Quiénes son los candidatos presidenciales para 2026?",
-                        "¿Qué pasa si no puedo votar el día de las elecciones?"
-                    ];
-            
-                    let currentIndex = 0;
-                    let currentCharIndex = 0;
-                    let isDeleting = false;
-                    let typingSpeed = 100;
-                    let pauseTime = 2000;
-            
-                    function typeWriter() {
-                        const currentPlaceholder = placeholders[currentIndex];
-            
-                        if (!isDeleting) {
-                            // Typing
-                            textarea.placeholder = currentPlaceholder.substring(0, currentCharIndex + 1);
-                            currentCharIndex++;
-            
-                            if (currentCharIndex === currentPlaceholder.length) {
-                                isDeleting = true;
-                                setTimeout(typeWriter, pauseTime);
-                                return;
-                            }
-                        } else {
-                            // Deleting
-                            textarea.placeholder = currentPlaceholder.substring(0, currentCharIndex);
-                            currentCharIndex--;
-            
-                            if (currentCharIndex < 0) {
-                                isDeleting = false;
-                                currentIndex = (currentIndex + 1) % placeholders.length;
-                                setTimeout(typeWriter, 500); // Pause before next placeholder
-                                return;
-                            }
-                        }
-            
-                        setTimeout(typeWriter, isDeleting ? typingSpeed / 2 : typingSpeed);
-                    }
-            
-                    // Start the animation
-                    typeWriter();
-                }
             });
         });
+    }
+
+    function setupRotatingPlaceholder(textarea) {
+        console.log('Función setupRotatingPlaceholder llamada');
+        const placeholders = [
+            "Pregunta cualquier tema",
+            "¿Qué documentos necesito para votar en las elecciones?",
+            "¿Cómo votan los peruanos que viven en el extranjero?",
+            "¿Quiénes son los candidatos presidenciales para 2026?",
+            "¿Qué pasa si no puedo votar el día de las elecciones?"
+        ];
+
+        console.log('Placeholders:', placeholders);
+
+        let currentIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        let pauseTime = 2000;
+
+        function typeWriter() {
+            console.log('typeWriter ejecutándose, currentIndex:', currentIndex, 'currentCharIndex:', currentCharIndex, 'isDeleting:', isDeleting);
+            const currentPlaceholder = placeholders[currentIndex];
+
+            if (!isDeleting) {
+                // Typing
+                textarea.placeholder = currentPlaceholder.substring(0, currentCharIndex + 1);
+                console.log('Typing:', textarea.placeholder);
+                currentCharIndex++;
+
+                if (currentCharIndex === currentPlaceholder.length) {
+                    isDeleting = true;
+                    setTimeout(typeWriter, pauseTime);
+                    return;
+                }
+            } else {
+                // Deleting
+                textarea.placeholder = currentPlaceholder.substring(0, currentCharIndex);
+                console.log('Deleting:', textarea.placeholder);
+                currentCharIndex--;
+
+                if (currentCharIndex < 0) {
+                    isDeleting = false;
+                    currentIndex = (currentIndex + 1) % placeholders.length;
+                    setTimeout(typeWriter, 500); // Pause before next placeholder
+                    return;
+                }
+            }
+
+            setTimeout(typeWriter, isDeleting ? typingSpeed / 2 : typingSpeed);
+        }
+
+        // Start the animation
+        console.log('Iniciando animación');
+        typeWriter();
     }
     
     function setupTextarea(textareaId) {
