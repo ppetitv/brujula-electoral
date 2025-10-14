@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         welcomeHeading.innerHTML = '';
         
-        const typingSpeed = 50;
+        const typingSpeed = 30;
 
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i];
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        const typingSpeed = 10;
+        const typingSpeed = 5;
         for (const item of allTextNodes) {
             const { node, text, nextComponent } = item;
             
